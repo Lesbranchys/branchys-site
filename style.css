@@ -2,3 +2,7 @@
 
 /* V8 : images HTML plutôt que fonds CSS, contrôle explicite de leur affichage */
 .banner{height:auto!important;aspect-ratio:auto!important;background:none!important;max-width:1400px;margin:auto;line-height:0}.banner img{display:block;width:100%;height:auto;object-fit:contain}.hero{position:relative;isolation:isolate;background:linear-gradient(90deg,#143c5d,#c6d1dc)!important;overflow:hidden}.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,36,67,.92),rgba(0,36,67,.45) 45%,rgba(0,36,67,.06));z-index:-1}.hero .inner{position:relative;z-index:1}
+.banner img { display: block !important; width: 100% !important; height: auto !important; opacity: 1 !important; visibility: visible !important; }
+.hero-photo { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; z-index: 0 !important; opacity: 1 !important; visibility: visible !important; }
+.hero::before { z-index: 1 !important; pointer-events: none; }
+.hero .inner { position: relative !important; z-index: 2 !important; }
