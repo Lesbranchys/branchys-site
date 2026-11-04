@@ -134,6 +134,10 @@
 <h3>🎬 Le water-polo, c’est aussi ça…</h3>
 <div id="branchys-video-content" aria-live="polite">Vidéo à venir.</div>
 </div>
+<div class="panel branchys-video">
+<h3>🎬 Et ça…</h3>
+<div id="branchys-video-content-2" aria-live="polite">Vidéo à venir.</div>
+</div>
 </div>
 <div class="panel branchys-news">
 <h3>
@@ -270,6 +274,43 @@
   if(!box)return;
   try{
     const response=await fetch('video-du-moment.json',{cache:'no-store'});
+    if(!response.ok)throw Error('Fichier vidéo introuvable');
+    const data=await response.json();
+    const url=(data.url||'').trim();
+    if(!url){box.textContent='Une nouvelle vidéo sera bientôt publiée ici.';return;}
+    const u=new URL(url);
+    let id='';
+    if(['youtube.com','www.youtube.com','m.youtube.com'].includes(u.hostname)){
+      if(u.pathname==='/watch')id=u.searchParams.get('v')||'';
+      else if(u.pathname.startsWith('/shorts/')||u.pathname.startsWith('/embed/'))id=u.pathname.split('/')[2]||'';
+    }else if(u.hostname==='youtu.be'||u.hostname==='www.youtu.be')id=u.pathname.slice(1).split('/')[0];
+    box.replaceChildren();
+    if(id && /^[a-zA-Z0-9_-]{11}$/.test(id)){
+      const frame=document.createElement('iframe');
+      frame.className='branchys-video-frame';
+      frame.src='https://www.youtube-nocookie.com/embed/'+id;
+      frame.title='Vidéo du club Les Branchy’s';
+      frame.loading='lazy';
+      frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      frame.allowFullscreen=true;
+      box.append(frame);
+    }else if(['instagram.com','www.instagram.com'].includes(u.hostname)){
+      const a=document.createElement('a');a.className='branchys-video-link';a.href=url;a.target='_blank';a.rel='noopener noreferrer';
+      a.textContent='▶ Voir la vidéo sur Instagram';box.append(a);
+    }else{
+      const a=document.createElement('a');a.className='branchys-video-link';a.href=url;a.target='_blank';a.rel='noopener noreferrer';
+      a.textContent='▶ Regarder la vidéo';box.append(a);
+    }
+  }catch(e){box.textContent='Vidéo momentanément indisponible.';console.warn('Vidéo Branchys:',e);}
+})();
+</script>
+<script>
+/* La deuxième vidéo se change dans le fichier video-et-ca.json sur GitHub. */
+(async function(){
+  const box=document.getElementById('branchys-video-content-2');
+  if(!box)return;
+  try{
+    const response=await fetch('video-et-ca.json',{cache:'no-store'});
     if(!response.ok)throw Error('Fichier vidéo introuvable');
     const data=await response.json();
     const url=(data.url||'').trim();
