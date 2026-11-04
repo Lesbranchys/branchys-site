@@ -1,1 +1,42 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Album | Les Branchy's</title><meta name="description" content="Les Branchy's, club de water-polo à Quimperlé."><link rel="stylesheet" href="style.css?v=8"></head><body><div class="banner"><img src="bandeau.png?v=8" alt="Les Branchy’s Water-Polo Quimperlé, Diwall Darer !"></div><div class="top"><div class="menu" onclick="menu()">☰ Menu</div><nav class="nav"><a href="index.html">Accueil</a><a href="club.html">Le club</a><a href="competition.html">Compétition</a><a href="loisir-beach.html">Loisir – Beach</a><a href="documents.html">Documents</a><a href="album.html">Album</a></nav></div><section class="pagehead"><div class="wrap"><h1>Album</h1></div></section><main class="wrap content"><p>Quelques images de la vie des Branchy’s. Cette galerie pourra ensuite être alimentée sans modifier la mise en page du site.</p><div class="gallery"><img src="competition.jpg"><img src="beach.jpg"><img src="aquapaq.jpg"><img src="waterpolo-hero.png"><img src="ball.jpg"><img src="logo.jpg"></div></main><div class="mixed">Pratique mixte à l’entraînement comme en match.</div><footer class="footer"><div class="wrap cols"><div><b>Contact</b><p>✉ <a href="mailto:lesbranchys@gmail.com">lesbranchys@gmail.com</a><br>📍 Sur place le lundi à 20h à l’Aquapaq de Quimperlé.</p></div><div><b>Suivez Les Branchy’s</b><p><a href="https://www.facebook.com/lesbranchysWaterpolo?locale=fr_FR">Facebook — Les Branchy’s Quimperlé</a><br><a href="https://www.instagram.com/lesbranchyswaterpolo/">Instagram — @Lesbranchyswaterpolo</a></p></div></div></footer><script src="app.js"></script></body></html>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Album | Les Branchy's</title><meta name="description" content="Les Branchy's, club de water-polo à Quimperlé."><link rel="stylesheet" href="style.css?v=8"></head><body><div class="banner"><img src="bandeau.png?v=8" alt="Les Branchy’s Water-Polo Quimperlé, Diwall Darer !"></div><div class="top"><div class="menu" onclick="menu()">☰ Menu</div><nav class="nav"><a href="index.html">Accueil</a><a href="club.html">Le club</a><a href="competition.html">Compétition</a><a href="loisir-beach.html">Loisir – Beach</a><a href="documents.html">Documents</a><a href="album.html">Album</a></nav></div><section class="pagehead"><div class="wrap"><h1>Album</h1></div></section><main class="wrap content"><p>Quelques images de la vie des Branchy’s.</p><div class="gallery" id="branchys-gallery"><p>Chargement des photos…</p></div>
+<p id="branchys-gallery-message" style="display:none"></p>
+<script>
+(function () {
+  const gallery = document.getElementById('branchys-gallery');
+  const message = document.getElementById('branchys-gallery-message');
+  const api = 'https://api.github.com/repos/Lesbranchys/branchys-site/contents/photos';
+  fetch(api, { headers: { Accept: 'application/vnd.github+json' } })
+    .then(response => {
+      if (response.status === 404) return [];
+      if (!response.ok) throw new Error('Impossible de charger les photos');
+      return response.json();
+    })
+    .then(files => {
+      gallery.replaceChildren();
+      const images = files.filter(file => file.type === 'file' && /\.(jpe?g|png|webp|gif)$/i.test(file.name))
+        .sort((a,b) => a.name.localeCompare(b.name, 'fr', {numeric:true}));
+      if (!images.length) {
+        message.textContent = 'Les photos du club seront bientôt disponibles ici.';
+        message.style.display = 'block';
+        return;
+      }
+      for (const file of images) {
+        const link = document.createElement('a');
+        link.href = file.download_url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        const img = document.createElement('img');
+        img.src = file.download_url;
+        img.alt = file.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+        img.loading = 'lazy';
+        link.append(img);
+        gallery.append(link);
+      }
+    })
+    .catch(() => {
+      gallery.replaceChildren();
+      message.textContent = 'Les photos sont momentanément indisponibles. Réessayez dans quelques instants.';
+      message.style.display = 'block';
+    });
+})();
+</script></main><div class="mixed">Pratique mixte à l’entraînement comme en match.</div><footer class="footer"><div class="wrap cols"><div><b>Contact</b><p>✉ <a href="mailto:lesbranchys@gmail.com">lesbranchys@gmail.com</a><br>📍 Sur place le lundi à 20h à l’Aquapaq de Quimperlé.</p></div><div><b>Suivez Les Branchy’s</b><p><a href="https://www.facebook.com/lesbranchysWaterpolo?locale=fr_FR">Facebook — Les Branchy’s Quimperlé</a><br><a href="https://www.instagram.com/lesbranchyswaterpolo/">Instagram — @Lesbranchyswaterpolo</a></p></div></div></footer><script src="app.js"></script></body></html>
