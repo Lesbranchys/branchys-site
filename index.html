@@ -14,6 +14,10 @@
 .branchys-home-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;margin:24px 0;align-items:start}
 .branchys-home-grid>.panel{min-width:0;box-sizing:border-box}
 .branchys-calendar iframe{display:block;max-width:100%}
+.branchys-left-column{display:flex;flex-direction:column;gap:22px;min-width:0}
+.branchys-video-frame{width:100%;aspect-ratio:16/9;border:0;border-radius:10px;display:block}
+.branchys-video-link{display:block;padding:22px;border-radius:10px;background:#edf5fb;color:#073c70;font-weight:700;text-align:center;overflow-wrap:anywhere}
+.branchys-video-note{font-size:.92rem;color:#4d6275}
 .branchys-news-entry{padding:14px 0;border-bottom:1px solid rgba(100,100,100,.18)}
 .branchys-news-entry:last-child{border-bottom:0}
 .branchys-news-date{font-size:.85rem;color:#a62672;font-weight:700;margin-bottom:5px}
@@ -118,12 +122,18 @@
 </article>
 </section>
 <section aria-label="Agenda et actualités" class="branchys-home-grid">
+<div class="branchys-left-column">
 <div class="panel branchys-calendar">
 <h3>
       📅 Prochains rendez-vous
      </h3>
 <iframe frameborder="0" scrolling="no" src="https://calendar.google.com/calendar/embed?src=cc6bb957d49f43c513a19305d1d5841eb3490ba3ffa5522769a342008bbf7cd6%40group.calendar.google.com&amp;src=lesbranchyswaterpolo%40gmail.com&amp;src=8979f59ed04fa400fa4c501b116ac95189510b73162f3433ba247147668f9b33%40group.calendar.google.com&amp;ctz=Europe%2FParis&amp;mode=AGENDA" style="border:0;width:100%;height:500px;" title="Calendrier des Branchys">
 </iframe>
+</div>
+<div class="panel branchys-video">
+<h3>🎬 Le water-polo, c’est aussi ça…</h3>
+<div id="branchys-video-content" aria-live="polite">Vidéo à venir.</div>
+</div>
 </div>
 <div class="panel branchys-news">
 <h3>
@@ -253,5 +263,42 @@
   }).catch(err=>{console.warn('Actualités Branchys:',err);box.textContent='Actualités temporairement indisponibles.';});
 })();
   </script>
+<script>
+/* La vidéo affichée se change dans le fichier video-du-moment.json sur GitHub. */
+(async function(){
+  const box=document.getElementById('branchys-video-content');
+  if(!box)return;
+  try{
+    const response=await fetch('video-du-moment.json',{cache:'no-store'});
+    if(!response.ok)throw Error('Fichier vidéo introuvable');
+    const data=await response.json();
+    const url=(data.url||'').trim();
+    if(!url){box.textContent='Une nouvelle vidéo sera bientôt publiée ici.';return;}
+    const u=new URL(url);
+    let id='';
+    if(['youtube.com','www.youtube.com','m.youtube.com'].includes(u.hostname)){
+      if(u.pathname==='/watch')id=u.searchParams.get('v')||'';
+      else if(u.pathname.startsWith('/shorts/')||u.pathname.startsWith('/embed/'))id=u.pathname.split('/')[2]||'';
+    }else if(u.hostname==='youtu.be'||u.hostname==='www.youtu.be')id=u.pathname.slice(1).split('/')[0];
+    box.replaceChildren();
+    if(id && /^[a-zA-Z0-9_-]{11}$/.test(id)){
+      const frame=document.createElement('iframe');
+      frame.className='branchys-video-frame';
+      frame.src='https://www.youtube-nocookie.com/embed/'+id;
+      frame.title='Vidéo du club Les Branchy’s';
+      frame.loading='lazy';
+      frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      frame.allowFullscreen=true;
+      box.append(frame);
+    }else if(['instagram.com','www.instagram.com'].includes(u.hostname)){
+      const a=document.createElement('a');a.className='branchys-video-link';a.href=url;a.target='_blank';a.rel='noopener noreferrer';
+      a.textContent='▶ Voir la vidéo sur Instagram';box.append(a);
+    }else{
+      const a=document.createElement('a');a.className='branchys-video-link';a.href=url;a.target='_blank';a.rel='noopener noreferrer';
+      a.textContent='▶ Regarder la vidéo';box.append(a);
+    }
+  }catch(e){box.textContent='Vidéo momentanément indisponible.';console.warn('Vidéo Branchys:',e);}
+})();
+</script>
 </body>
 </html>
