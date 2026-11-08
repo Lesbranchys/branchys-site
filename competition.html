@@ -52,8 +52,53 @@
 <h2>Championnat de Bretagne</h2>
 <p class="branchys-competition-intro">Les Branchy’s engagent une équipe dans le championnat de Bretagne de water-polo. Le club a remporté ce championnat pour la dernière fois en <strong>2024</strong>.</p>
 <section class="panel branchys-competition-news" aria-labelledby="branchys-news-heading">
-  <h3 id="branchys-news-heading">📰 Actualités et comptes rendus des matchs</h3>
-  <div id="branchys-competition-articles" aria-live="polite"><p>Chargement des comptes rendus…</p></div>
+  <h3 id="branchys-news-heading">📰 Comptes rendus des matchs</h3>
+  <div id="branchys-competition-articles" aria-live="polite">
+<article class="branchys-article"><div class="branchys-article-date">07/11/2026</div><h4 class="branchys-article-title">1er match du championat de Bretagne à Rennes</h4><div class="branchys-article-body"><span style="font-weight:700;font-size:17pt">🤽 Les Branchy’s frappent fort à Rennes : 20 à 5 pour lancer la saison !</span>
+<span style="font-weight:700;font-size:11pt">Championnat de Bretagne – 1re journée</span>
+Pour leur entrée en lice dans le championnat de Bretagne, les Branchy’s de Quimperlé se déplaçaient à Rennes avec une ambition claire : confirmer les belles promesses entrevues lors du tournoi de préparation de Donges.
+
+<span style="font-weight:700">Mission accomplie ! Une victoire 20 à 5, aussi nette au tableau d’affichage que dans le duel des moyennes d’âge !</span>
+
+Il faut dire que les Rennais avaient fait le choix de la jeunesse. Le club, qui engage également une équipe en championnat national, avait laissé quelques titulaires habituels à la maison, dont son solide et expérimenté gardien de but.
+
+Côté finistérien, pas question de faire tourner pour cette première sortie : les Branchy’s avaient aligné une formation solide, composée d’une majorité de titulaires, bien décidée à ne pas manquer son départ.
+
+<span style="font-weight:700;font-size:14pt">Un début sérieux et appliqué</span>
+Sous la surveillance d&#39;un arbitrage de niveau national, à la fois rigoureux et pédagogique, les joueurs de la Laïta prenaient rapidement les commandes.
+La consigne était claire : <span style="font-weight:700">de la rigueur défensive et des attaques construites.</span>
+Étienne, notre recrue venue de Concarneau, ouvrait le score, rapidement imité par Benoît, avant que Paul, notre serial buteur, ne débloque à son tour son compteur.
+Quelques belles attaques placées et une défense bien organisée permettaient aux Branchy’s de boucler le premier quart-temps sur un avantage confortable : <span style="font-weight:700">6-2</span>.
+<span style="font-weight:700;font-size:14pt">Une défense de fer… mais quelques réglages offensifs !</span>
+
+La deuxième période confirmait la solidité défensive des Finistériens. En revanche, devant, les bonnes intentions du début laissaient parfois place à un jeu plus brouillon.
+Tirs lointains et non cadrés, tentatives précipitées, les Branchy’s oubliaient par moments que le jeu de passe est la base de ce sport, meme avec un gardien adverse peu expérimenté. Il Faudra s&#39;en souvenir lorsque l&#39;adversité sera plus soutenue!
+Malgré ces approximations, le score continuait de grimper : 4-0 dans ce deuxième quart-temps, et déjà 10-2 à la pause.
+
+<span style="font-weight:700;font-size:14pt">Les Branchy’s déroulent</span>
+Un troisième quart-temps remporté 4-0, sans véritable inquiétude. La défense verrouillait toujours les offensives rennaises tandis que les Quimperlois continuaient de creuser l&#39;écart.
+
+Dans la dernière période, les Rennais retrouvaient quelques couleurs. Les Branchy’s, eux, se montraient moins précis dans leurs choix offensifs, oubliant parfois les partenaires démarqués dans les espaces libérés par la fatigue adverse.
+Un dernier quart-temps plus ouvert, mais tout de même remporté 6-3 par les visiteurs.
+
+<span style="font-weight:700;font-size:14pt">Des buteurs, mais surtout un vrai travail collectif</span>
+Si Paul, Quentin et Étienne ont assuré l’essentiel du spectacle au tableau d’affichage, la victoire s’est construite grâce au travail de toute l’équipe.
+Mention particulière à nos contre-pointes, véritables voleurs de ballons, qui ont multiplié les interceptions à la pointe, coupant court à de nombreuses tentatives rennaises.
+Sans oublier l&#39;énorme travail de placement et les déplacements box-to-box de nos joueurs aux ailes. De quoi étirer les défenses, libérer les espaces et proposer un jeu autrement plus aéré que les traditionnels embouteillages autour de la pointe !
+Autre motif de satisfaction : <span style="font-weight:700">trois ballons remportés sur quatre aux engagements</span>, permettant aux Branchy’s de prendre régulièrement l&#39;initiative.
+Dans les buts, notre gardien aura vécu une soirée relativement tranquille, mais sera resté appliqué et vigilant sur les quelques sollicitations rennaises.
+<span style="font-weight:700;font-size:14pt">Les adversaires sont prévenus !</span>
+
+Avec cette victoire nette, les Branchy’s lancent idéalement leur championnat de Bretagne.
+<span style="font-weight:700">20 buts marqués, seulement 5 encaissés : les joueurs de la Laïta ne sont pas venus faire de la figuration cette saison !</span>
+Les adversaires sont prévenus : <span style="font-weight:700">les Branchy’s sont de retour !</span>
+
+<span style="font-weight:700;font-size:13pt">📅 Prochain rendez-vous Samedi 28 novembre 2026 à 20 h</span>
+<span style="font-weight:700">🤽 Les Branchy’s – Fougères</span>
+Championnat de Bretagne – Premier match à domicile, à Quimperlé.
+<span style="font-weight:700">Venez encourager les Branchy’s pour confirmer ce beau départ !</span> 
+</div></article>
+</div>
 </section>
 <section class="branchys-competition-grid" aria-label="Calendrier, résultats et classement du championnat de Bretagne">
   <div class="panel branchys-competition-calendar">
@@ -123,16 +168,32 @@ function renderRuns(container,runs){
     container.append(span);
   }
 }
+function dateKey(value){
+  const valueText=String(value||'').trim();
+  const m=valueText.match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{2}|\d{4})$/);
+  if(m){
+    const day=Number(m[1]),month=Number(m[2]);
+    let year=Number(m[3]);
+    if(m[3].length===2)year+=year<70?2000:1900;
+    const d=new Date(year,month-1,day);
+    return d.getFullYear()===year&&d.getMonth()===month-1&&d.getDate()===day?d.getTime():0;
+  }
+  const d=Date.parse(valueText);return Number.isNaN(d)?0:d;
+}
+let remoteUpdated=false;
 window.branchysCompetitionData = function(data){
+  remoteUpdated=true;
   if(!data||typeof data!=='object'||data.error){
     console.warn('Compétition : réponse invalide',data);
     return;
   }
-  articlesBox.replaceChildren();
   if(!Array.isArray(data.articles)||!data.articles.length){
-    articlesBox.append(el('p','branchys-ranking-status','Les comptes rendus seront publiés prochainement.'));
+    if(!articlesBox.querySelector('.branchys-article'))
+      articlesBox.append(el('p','branchys-ranking-status','Les comptes rendus seront publiés prochainement.'));
   }else{
-    for(const item of data.articles){
+    articlesBox.replaceChildren();
+    const sorted = [...data.articles].sort((a,b) => dateKey(b.date)-dateKey(a.date) || (Number(b.order)||0)-(Number(a.order)||0));
+    for(const item of sorted){
       const article=el('article','branchys-article');
       if(item.date)article.append(el('div','branchys-article-date',item.date));
       if(item.title)article.append(el('h4','branchys-article-title',item.title));
@@ -161,10 +222,19 @@ window.branchysCompetitionData = function(data){
   }
   table.append(tbody);wrapper.append(table);rankingBox.append(wrapper);
 };
-const script=document.createElement('script');
-script.src=COMPETITION_SCRIPT_URL+(COMPETITION_SCRIPT_URL.includes('?')?'&':'?')+'ts='+Date.now();
-script.onerror=()=>{articlesBox.textContent='Actualités temporairement indisponibles. Le classement indicatif reste affiché.';};
-document.head.append(script);
+/* Les articles déjà publiés restent visibles si Google Apps Script échoue. */
+let attempt=0;
+function loadCompetitionData(){
+  attempt++;
+  const script=document.createElement('script');
+  script.async=true;
+  script.src=COMPETITION_SCRIPT_URL+(COMPETITION_SCRIPT_URL.includes('?')?'&':'?')+'ts='+Date.now()+'-'+attempt;
+  const retry=()=>{if(!remoteUpdated&&attempt<3)setTimeout(loadCompetitionData,attempt*1200);};
+  script.onerror=retry;
+  script.onload=retry;
+  document.head.append(script);
+}
+loadCompetitionData();
 })();
 </script>
 </body>
