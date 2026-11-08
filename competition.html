@@ -1,1 +1,137 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Compétition | Les Branchy's</title><meta name="description" content="Les Branchy's, club de water-polo à Quimperlé."><link rel="stylesheet" href="style.css?v=8"></head><body><div class="banner"><img src="bandeau.png?v=8" alt="Les Branchy’s Water-Polo Quimperlé, Diwall Darer !"></div><div class="top"><div class="menu" onclick="menu()">☰ Menu</div><nav class="nav"><a href="index.html">Accueil</a><a href="club.html">Le club</a><a href="competition.html">Compétition</a><a href="loisir-beach.html">Loisir – Beach</a><a href="documents.html">Documents</a><a href="album.html">Album</a></nav></div><section class="pagehead"><div class="wrap"><h1>Compétition</h1></div></section><main class="wrap content"><h2>Championnat de Bretagne</h2><p>Les Branchy’s engagent une équipe dans le championnat de Bretagne de water-polo. Le club a remporté ce championnat pour la dernière fois en <b>2024</b>.</p><p>Cette page pourra accueillir le calendrier des rencontres, les résultats, les convocations et les liens utiles de la saison.</p><div class="panel"><h3>Prochains rendez-vous</h3><div id="calendrier-matchs"><iframe src="https://calendar.google.com/calendar/embed?src=cc6bb957d49f43c513a19305d1d5841eb3490ba3ffa5522769a342008bbf7cd6%40group.calendar.google.com&amp;ctz=Europe%2FParis&amp;mode=AGENDA" style="border:0;width:80%;height:360px;transform:scale(1.25);transform-origin:top left;";" frameborder="0" scrolling="no" title="Calendrier des matchs des Branchy's"></iframe></div></div></main><div class="mixed">Pratique mixte à l’entraînement comme en match.</div><footer class="footer"><div class="wrap cols"><div><b>Contact</b><p>✉ <a href="mailto:lesbranchys@gmail.com">lesbranchys@gmail.com</a><br>📍 Sur place le lundi à 20h à l’Aquapaq de Quimperlé.</p></div><div><b>Suivez Les Branchy’s</b><p><a href="https://www.facebook.com/lesbranchysWaterpolo?locale=fr_FR">Facebook — Les Branchy’s Quimperlé</a><br><a href="https://www.instagram.com/lesbranchyswaterpolo/">Instagram — @Lesbranchyswaterpolo</a></p></div></div></footer><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="Championnats et actualités des Branchy’s de Quimperlé : calendrier, classement et résultats."/>
+<title>Compétition | Les Branchy's</title>
+<link rel="stylesheet" href="style.css?v=8"/>
+<style>
+/* La page Compétition ne nécessite aucun autre fichier CSS. */
+.branchys-competition-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:22px;align-items:start;margin:28px 0}
+.branchys-competition-grid>.panel{min-width:0}
+.branchys-competition-calendar iframe{display:block;width:100%;height:325px;border:0;border-radius:8px}
+.branchys-competition-sources{display:flex;flex-wrap:wrap;gap:10px 16px;margin:10px 0 0;font-size:.95rem}
+.branchys-competition-sources a{color:#0067a7;font-weight:700}
+.branchys-ranking-scroll{overflow-x:auto;max-width:100%}
+.branchys-ranking{border-collapse:collapse;width:100%;font-size:.87rem;line-height:1.35;white-space:nowrap}
+.branchys-ranking th,.branchys-ranking td{padding:9px 7px;border-bottom:1px solid #e4eef5;text-align:center}
+.branchys-ranking th{background:#eaf6fc;color:#003f73;font-weight:800}
+.branchys-ranking th:nth-child(2),.branchys-ranking td:nth-child(2){text-align:left;white-space:normal;min-width:138px}
+.branchys-ranking tbody tr.branchys-own-team{background:#fff0f6;font-weight:800}
+.branchys-ranking tbody tr:hover{background:#f4f9fd}
+.branchys-ranking-status{color:#4d6275;font-size:.9rem;margin:.8rem 0 0}
+.branchys-competition-news{margin:22px 0}
+.branchys-competition-news .branchys-article{padding:16px 0;border-bottom:1px solid #e4eef5}
+.branchys-competition-news .branchys-article:last-child{border-bottom:none}
+.branchys-article-date{color:#a62672;font-weight:700;font-size:.88rem}
+.branchys-article-title{font-size:1.28rem;margin:.35rem 0 .6rem;color:#003f73}
+.branchys-article-body{line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
+.branchys-competition-intro{max-width:900px}
+@media(max-width:830px){.branchys-competition-grid{grid-template-columns:minmax(0,1fr)}.branchys-competition-calendar iframe{height:310px}}
+</style>
+</head>
+<body>
+<div class="banner"><img src="bandeau.png?v=8" alt="Les Branchy’s Water-Polo Quimperlé, Diwall Darer !" decoding="async"/></div>
+<div class="top"><div class="menu" onclick="menu()">☰ Menu</div>
+<nav class="nav"><a href="index.html">Accueil</a><a href="club.html">Le club</a><a class="active" href="competition.html" aria-current="page">Compétition</a><a href="loisir-beach.html">Loisir – Beach</a><a href="documents.html">Documents</a><a href="album.html">Album</a></nav></div>
+<section class="pagehead"><div class="wrap"><h1>Compétition</h1></div></section>
+<main class="wrap content">
+<h2>Championnat de Bretagne</h2>
+<p class="branchys-competition-intro">Les Branchy’s engagent une équipe dans le championnat de Bretagne de water-polo. Le club a remporté ce championnat pour la dernière fois en <strong>2024</strong>.</p>
+<section class="branchys-competition-grid" aria-label="Calendrier et classement du championnat de Bretagne">
+  <div class="panel branchys-competition-calendar">
+    <h3>📅 Prochains rendez-vous</h3>
+    <iframe src="https://calendar.google.com/calendar/embed?src=cc6bb957d49f43c513a19305d1d5841eb3490ba3ffa5522769a342008bbf7cd6%40group.calendar.google.com&amp;ctz=Europe%2FParis&amp;mode=AGENDA" loading="lazy" referrerpolicy="no-referrer-when-downgrade" scrolling="no" title="Calendrier des matchs des Branchy’s"></iframe>
+  </div>
+  <div class="panel branchys-competition-classement">
+    <h3>🏆 Classement — Bretagne Régional 2026–2027</h3>
+    <div id="branchys-classement" aria-live="polite"><p class="branchys-ranking-status">Classement en préparation.</p></div>
+    <p class="branchys-ranking-status">Classement renseigné dans la feuille « Classement » du Google Sheets Compétition ; consulter les résultats officiels pour confirmation.</p>
+    <div class="branchys-competition-sources"><a href="https://www.extranat.fr/waterpolo/cgi-bin/wp_results.php?action=structure&amp;structure=2855" target="_blank" rel="noopener noreferrer">Résultats officiels des Branchy’s (FFN)</a><a href="https://www.extranat.fr/waterpolo/cgi-bin/wp_calendar.php?action=structure&amp;structure=2855" target="_blank" rel="noopener noreferrer">Calendrier officiel (FFN)</a></div>
+  </div>
+</section>
+<section class="panel branchys-competition-news" aria-labelledby="branchys-news-heading">
+<h3 id="branchys-news-heading">📰 Actualités et comptes rendus des matchs</h3>
+<div id="branchys-competition-articles" aria-live="polite"><p>Actualités de compétition en préparation.</p></div>
+</section>
+</main>
+<div class="mixed">Pratique mixte à l’entraînement comme en match.</div>
+<footer class="footer"><div class="wrap cols"><div><b>Contact</b><p>✉ <a href="mailto:lesbranchys@gmail.com">lesbranchys@gmail.com</a><br>📍 Sur place le lundi à 20h à l’Aquapaq de Quimperlé.</p></div><div><b>Suivez Les Branchy’s</b><p><a href="https://www.facebook.com/lesbranchysWaterpolo?locale=fr_FR">Facebook — Les Branchy’s Quimperlé</a><br><a href="https://www.instagram.com/lesbranchyswaterpolo/">Instagram — @Lesbranchyswaterpolo</a></p></div></div></footer>
+<script src="app.js"></script>
+<script>
+/* Source Google Apps Script du deuxième Google Sheets, dédiée à la compétition. */
+(function(){
+'use strict';
+const COMPETITION_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyOS8O6voXJjvKASno7UT6C_9ex5YL3ZVlCDhCtMxXpoHF7IBbK993dCEz0AWGVwXOMQg/exec';
+const rankingBox = document.getElementById('branchys-classement');
+const articlesBox = document.getElementById('branchys-competition-articles');
+if(!/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec(?:\?.*)?$/.test(COMPETITION_SCRIPT_URL)) return;
+
+function el(tag,cls,txt){
+  const e=document.createElement(tag);
+  if(cls)e.className=cls;
+  if(txt!==undefined)e.textContent=String(txt);
+  return e;
+}
+function renderRuns(container,runs){
+  container.replaceChildren();
+  for(const run of (Array.isArray(runs)?runs:[])){
+    const span=el('span','',run.text||'');
+    if(run.bold===true)span.style.fontWeight='700';
+    if(run.italic===true)span.style.fontStyle='italic';
+    if(run.underline===true)span.style.textDecoration='underline';
+    const size=Number(run.fontSize);
+    if(Number.isFinite(size)&&size>=8&&size<=32)span.style.fontSize=size+'pt';
+    const color=String(run.color||'');
+    if(/^#[0-9a-fA-F]{6}$/.test(color))span.style.color=color;
+    container.append(span);
+  }
+}
+window.branchysCompetitionData = function(data){
+  if(!data||typeof data!=='object'||data.error){
+    console.warn('Compétition : réponse invalide',data);
+    return;
+  }
+  articlesBox.replaceChildren();
+  if(!Array.isArray(data.articles)||!data.articles.length){
+    articlesBox.append(el('p','branchys-ranking-status','Les comptes rendus seront publiés prochainement.'));
+  }else{
+    for(const item of data.articles){
+      const article=el('article','branchys-article');
+      if(item.date)article.append(el('div','branchys-article-date',item.date));
+      if(item.title)article.append(el('h4','branchys-article-title',item.title));
+      const body=el('div','branchys-article-body');
+      renderRuns(body,item.runs || (item.body?[{text:item.body}]:[]));
+      article.append(body); articlesBox.append(article);
+    }
+  }
+  rankingBox.replaceChildren();
+  if(!Array.isArray(data.classement)||!data.classement.length){
+    rankingBox.append(el('p','branchys-ranking-status','Le classement n’est pas encore renseigné dans le Google Sheets Compétition.'));
+    return;
+  }
+  const wrapper=el('div','branchys-ranking-scroll'),table=el('table','branchys-ranking');
+  table.setAttribute('aria-label','Classement du championnat de Bretagne');
+  const thead=el('thead'),header=el('tr');
+  const labels=['Rang','Équipe','J','V','N','D','BP','BC','Pts'];
+  for(const label of labels){const cell=el('th','',label);cell.scope='col';header.append(cell);}
+  thead.append(header);table.append(thead);
+  const tbody=el('tbody');
+  for(const row of data.classement){
+    const tr=el('tr');
+    const team=String(row.equipe||'');
+    if(team.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').includes('branchy'))tr.className='branchys-own-team';
+    for(const value of [row.rang,team,row.j,row.v,row.n,row.d,row.bp,row.bc,row.pts])tr.append(el('td','',value===undefined?'':value));
+    tbody.append(tr);
+  }
+  table.append(tbody);wrapper.append(table);rankingBox.append(wrapper);
+};
+const script=document.createElement('script');
+script.src=COMPETITION_SCRIPT_URL+(COMPETITION_SCRIPT_URL.includes('?')?'&':'?')+'ts='+Date.now();
+script.onerror=()=>{rankingBox.replaceChildren(el('p','branchys-ranking-status','Classement momentanément indisponible. Voir les résultats officiels ci-dessous.'));articlesBox.textContent='Actualités temporairement indisponibles.';};
+document.head.append(script);
+})();
+</script>
+</body>
+</html>
