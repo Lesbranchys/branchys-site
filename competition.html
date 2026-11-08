@@ -29,6 +29,18 @@
 .branchys-article-body{line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
 .branchys-competition-intro{max-width:900px}
 @media(max-width:830px){.branchys-competition-grid{grid-template-columns:minmax(0,1fr)}.branchys-competition-calendar iframe{height:310px}}
+
+/* Informations de compétition : calendrier à gauche, résultats et classement à droite. */
+.branchys-competition-side{display:grid;gap:20px;min-width:0;align-content:start}
+.branchys-competition-results,.branchys-competition-classement{min-width:0}
+.branchys-competition-grid .panel{box-sizing:border-box}
+.branchys-match-result{background:#f1f7fa;border-radius:10px;padding:12px 14px;margin:12px 0 4px}
+.branchys-match-date{color:#a62672;font-weight:700;font-size:.88rem;margin-bottom:9px}
+.branchys-match-teams{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-weight:700;color:#003f73}
+.branchys-match-teams strong{font-size:1.55rem;white-space:nowrap;color:#a62672}
+.branchys-competition-news{margin:24px 0}
+.branchys-competition-calendar iframe{height:320px}
+@media(max-width:830px){.branchys-competition-side{gap:16px}.branchys-competition-grid{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -39,21 +51,44 @@
 <main class="wrap content">
 <h2>Championnat de Bretagne</h2>
 <p class="branchys-competition-intro">Les Branchy’s engagent une équipe dans le championnat de Bretagne de water-polo. Le club a remporté ce championnat pour la dernière fois en <strong>2024</strong>.</p>
-<section class="branchys-competition-grid" aria-label="Calendrier et classement du championnat de Bretagne">
-  <div class="panel branchys-competition-calendar">
-    <h3>📅 Prochains rendez-vous</h3>
-    <iframe src="https://calendar.google.com/calendar/embed?src=cc6bb957d49f43c513a19305d1d5841eb3490ba3ffa5522769a342008bbf7cd6%40group.calendar.google.com&amp;ctz=Europe%2FParis&amp;mode=AGENDA" loading="lazy" referrerpolicy="no-referrer-when-downgrade" scrolling="no" title="Calendrier des matchs des Branchy’s"></iframe>
-  </div>
-  <div class="panel branchys-competition-classement">
-    <h3>🏆 Classement — Bretagne Régional 2026–2027</h3>
-    <div id="branchys-classement" aria-live="polite"><p class="branchys-ranking-status">Classement en préparation.</p></div>
-    <p class="branchys-ranking-status">Classement renseigné dans la feuille « Classement » du Google Sheets Compétition ; consulter les résultats officiels pour confirmation.</p>
-    <div class="branchys-competition-sources"><a href="https://www.extranat.fr/waterpolo/cgi-bin/wp_results.php?action=structure&amp;structure=2855" target="_blank" rel="noopener noreferrer">Résultats officiels des Branchy’s (FFN)</a><a href="https://www.extranat.fr/waterpolo/cgi-bin/wp_calendar.php?action=structure&amp;structure=2855" target="_blank" rel="noopener noreferrer">Calendrier officiel (FFN)</a></div>
-  </div>
-</section>
 <section class="panel branchys-competition-news" aria-labelledby="branchys-news-heading">
-<h3 id="branchys-news-heading">📰 Actualités et comptes rendus des matchs</h3>
-<div id="branchys-competition-articles" aria-live="polite"><p>Actualités de compétition en préparation.</p></div>
+  <h3 id="branchys-news-heading">📰 Actualités et comptes rendus des matchs</h3>
+  <div id="branchys-competition-articles" aria-live="polite"><p>Chargement des comptes rendus…</p></div>
+</section>
+<section class="branchys-competition-grid" aria-label="Calendrier, résultats et classement du championnat de Bretagne">
+  <div class="panel branchys-competition-calendar">
+    <h3>📅 Calendrier des matchs</h3>
+    <iframe src="https://calendar.google.com/calendar/embed?src=cc6bb957d49f43c513a19305d1d5841eb3490ba3ffa5522769a342008bbf7cd6%40group.calendar.google.com&amp;ctz=Europe%2FParis&amp;mode=AGENDA" loading="lazy" referrerpolicy="no-referrer-when-downgrade" scrolling="no" title="Calendrier des matchs des Branchy’s"></iframe>
+    <p class="branchys-competition-sources"><a href="https://www.extranat.fr/waterpolo/cgi-bin/wp_calendar.php?action=structure&amp;structure=2855" target="_blank" rel="noopener noreferrer">Voir le calendrier officiel FFN des Branchy’s</a></p>
+  </div>
+  <div class="branchys-competition-side">
+    <section class="panel branchys-competition-results" aria-labelledby="branchys-results-heading">
+      <h3 id="branchys-results-heading">🤽 Résultats</h3>
+      <div class="branchys-match-result">
+        <div class="branchys-match-date">7 novembre 2026 · 1re journée</div>
+        <div class="branchys-match-teams"><span>C. Paul-Bert Rennes</span><strong>5 – 20</strong><span>Les Branchy’s Quimperlé</span></div>
+      </div>
+      <p class="branchys-ranking-status">Dernier résultat connu. Pour les matchs suivants, consulter les résultats officiels.</p>
+      <p class="branchys-competition-sources"><a href="https://www.extranat.fr/waterpolo/cgi-bin/wp_results.php?action=structure&amp;structure=2855" target="_blank" rel="noopener noreferrer">Tous les résultats officiels FFN des Branchy’s</a></p>
+    </section>
+    <section class="panel branchys-competition-classement" aria-labelledby="branchys-standings-heading">
+      <h3 id="branchys-standings-heading">🏆 Classement provisoire 2026–2027</h3>
+      <div id="branchys-classement" aria-live="polite">
+        <div class="branchys-ranking-scroll">
+          <table class="branchys-ranking" aria-label="Classement provisoire du championnat de Bretagne après la première journée">
+            <thead><tr><th>Rang</th><th>Équipe</th><th>J</th><th>V</th><th>N</th><th>D</th><th>BP</th><th>BC</th><th>Pts</th></tr></thead>
+            <tbody>
+              <tr class="branchys-own-team"><td>1</td><td>Les Branchy’s Quimperlé</td><td>1</td><td>1</td><td>0</td><td>0</td><td>20</td><td>5</td><td>3</td></tr>
+              <tr><td>2 ex.</td><td>Armoricaine Brest</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>2 ex.</td><td>CN Fougères</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>4</td><td>C. Paul-Bert Rennes</td><td>1</td><td>0</td><td>0</td><td>1</td><td>5</td><td>20</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="branchys-ranking-status">Classement <strong>indicatif</strong>, calculé à partir des résultats connus et mis à jour depuis le Google Sheets Compétition ; il ne remplace pas un classement officiellement homologué par la FFN.</p>
+    </section>
+  </div>
 </section>
 </main>
 <div class="mixed">Pratique mixte à l’entraînement comme en match.</div>
@@ -106,11 +141,10 @@ window.branchysCompetitionData = function(data){
       article.append(body); articlesBox.append(article);
     }
   }
-  rankingBox.replaceChildren();
   if(!Array.isArray(data.classement)||!data.classement.length){
-    rankingBox.append(el('p','branchys-ranking-status','Le classement n’est pas encore renseigné dans le Google Sheets Compétition.'));
-    return;
+    return; /* Conserver le tableau indicatif initial si les données sont absentes. */
   }
+  rankingBox.replaceChildren();
   const wrapper=el('div','branchys-ranking-scroll'),table=el('table','branchys-ranking');
   table.setAttribute('aria-label','Classement du championnat de Bretagne');
   const thead=el('thead'),header=el('tr');
@@ -129,7 +163,7 @@ window.branchysCompetitionData = function(data){
 };
 const script=document.createElement('script');
 script.src=COMPETITION_SCRIPT_URL+(COMPETITION_SCRIPT_URL.includes('?')?'&':'?')+'ts='+Date.now();
-script.onerror=()=>{rankingBox.replaceChildren(el('p','branchys-ranking-status','Classement momentanément indisponible. Voir les résultats officiels ci-dessous.'));articlesBox.textContent='Actualités temporairement indisponibles.';};
+script.onerror=()=>{articlesBox.textContent='Actualités temporairement indisponibles. Le classement indicatif reste affiché.';};
 document.head.append(script);
 })();
 </script>
