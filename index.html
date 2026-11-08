@@ -198,6 +198,79 @@
 })();
 </script>
 <script>
+/* Les Branchy's — mise en forme réelle de Google Sheets (via Apps Script).
+   Après déploiement du Code.gs, remplacer uniquement l'URL ci-dessous.
+   Ne pas modifier le code HTML des vidéos ni du calendrier. */
+(function () {
+  'use strict';
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyzcbkg5ScNzSc2_zrZTDjazWANryJluVjCwoP0Hw37nyQfIYMxAlHgBldJVa-vljsYZA/exec';
+  if (!/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec(?:\?.*)?$/.test(APPS_SCRIPT_URL)) {
+    console.warn('Actualités enrichies : renseigner APPS_SCRIPT_URL dans actualites-rich.js');
+    return; // Le système CSV existant continue à fonctionner sans mise en forme.
+  }
+  const box = document.getElementById('branchys-actualites');
+  if (!box) return;
+  const observer = new MutationObserver(() => {
+    // Si l'ancien chargement CSV arrive après nous, restaurer l'affichage enrichi.
+    if (latestItems) render(latestItems);
+  });
+  let latestItems = null;
+
+  function dateValue(s) {
+    const m = String(s).trim().match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{4})$/);
+    if (m) return new Date(+m[3], +m[2]-1, +m[1]).getTime();
+    const n = Date.parse(s); return Number.isNaN(n) ? 0 : n;
+  }
+  function render(items) {
+    observer.disconnect();
+    box.replaceChildren();
+    const ordered = [...items].sort((a,b) => dateValue(b.date) - dateValue(a.date) || b.order - a.order).slice(0, 5);
+    if (!ordered.length) box.textContent = 'Les prochaines informations du club seront publiées ici.';
+    ordered.forEach(item => {
+      const article = document.createElement('article');
+      article.className = 'branchys-news-entry';
+      if (item.date) {
+        const date = document.createElement('div'); date.className = 'branchys-news-date';
+        date.textContent = item.date; article.append(date);
+      }
+      if (item.title) {
+        const title = document.createElement('h4'); title.className = 'branchys-news-title';
+        title.textContent = item.title; article.append(title);
+      }
+      const para = document.createElement('div'); para.className = 'branchys-news-text';
+      para.style.whiteSpace = 'pre-wrap';
+      (item.runs || []).forEach(part => {
+        const span = document.createElement('span');
+        span.textContent = part.text || ''; // Utilise textContent : aucun HTML exécuté.
+        if (part.bold) span.style.fontWeight = '700';
+        if (part.italic) span.style.fontStyle = 'italic';
+        if (part.underline) span.style.textDecoration = 'underline';
+        const size = Number(part.fontSize);
+        if (Number.isFinite(size) && size >= 8 && size <= 28) {
+          span.style.fontSize = size + 'pt';
+        }
+        para.append(span);
+      });
+      article.append(para); box.append(article);
+    });
+    observer.observe(box, {childList:true});
+  }
+  window.branchysRichNews = function (payload) {
+    if (!payload || !Array.isArray(payload.items)) {
+      console.warn('Actualités enrichies : réponse invalide', payload);
+      return; // On conserve les actus existantes en CSV.
+    }
+    latestItems = payload.items;
+    render(latestItems);
+  };
+  const script = document.createElement('script');
+  script.src = APPS_SCRIPT_URL + (APPS_SCRIPT_URL.includes('?') ? '&' : '?') + 'ts=' + Date.now();
+  script.onerror = () => console.warn('Actualités enrichies : impossible de joindre Apps Script');
+  document.head.append(script);
+})();
+
+</script>
+<script>
 /* La vidéo affichée se change dans le fichier video-du-moment.json sur GitHub. */
 (async function(){
   const box=document.getElementById('branchys-video-content');
