@@ -1,1 +1,149 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Documents | Les Branchy's</title><meta name="description" content="Les Branchy's, club de water-polo à Quimperlé."><link rel="stylesheet" href="style.css?v=8"></head><body><div class="banner"><img src="bandeau.png?v=8" alt="Les Branchy’s Water-Polo Quimperlé, Diwall Darer !"></div><div class="top"><div class="menu" onclick="menu()">☰ Menu</div><nav class="nav"><a href="index.html">Accueil</a><a href="club.html">Le club</a><a href="competition.html">Compétition</a><a href="loisir-beach.html">Loisir – Beach</a><a href="documents.html">Documents</a><a href="album.html">Album</a></nav></div><section class="pagehead"><div class="wrap"><h1>Documents</h1></div></section><main class="wrap content"><p>Retrouvez ici les documents utiles du club et les documents liés aux licences.</p><div id="docs"></div><p class="small">Les dossiers individuels et données personnelles des adhérents ne sont pas publiés dans cet espace.</p></main><div class="mixed">Pratique mixte à l’entraînement comme en match.</div><footer class="footer"><div class="wrap cols"><div><b>Contact</b><p>✉ <a href="mailto:lesbranchys@gmail.com">lesbranchys@gmail.com</a><br>📍 Sur place le lundi à 20h à l’Aquapaq de Quimperlé.</p></div><div><b>Suivez Les Branchy’s</b><p><a href="https://www.facebook.com/lesbranchysWaterpolo?locale=fr_FR">Facebook — Les Branchy’s Quimperlé</a><br><a href="https://www.instagram.com/lesbranchyswaterpolo/">Instagram — @Lesbranchyswaterpolo</a></p></div></div></footer><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Documents | Les Branchy's</title>
+  <meta name="description" content="Documents du club de water-polo Les Branchy's à Quimperlé : informations, règlements et formulaires à consulter ou télécharger.">
+  <link rel="stylesheet" href="style.css?v=8">
+  <style>
+    .branchys-doc-intro { max-width: 830px; }
+    .branchys-doc-list { display: grid; gap: 12px; margin: 24px 0; }
+    .branchys-doc-item { display: flex; align-items: center; gap: 16px; padding: 17px 20px; border: 1px solid #dceaf4; border-radius: 13px; background: #f8fbfe; }
+    .branchys-doc-icon { flex: 0 0 auto; font-size: 29px; line-height: 1; }
+    .branchys-doc-details { flex: 1 1 auto; min-width: 0; }
+    .branchys-doc-title { margin: 0; font-size: 1.08rem; font-weight: 700; overflow-wrap: anywhere; }
+    .branchys-doc-meta { display: block; margin-top: 3px; font-size: 0.85rem; opacity: 0.72; }
+    .branchys-doc-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; }
+    .branchys-doc-actions a { display: inline-block; padding: 8px 12px; border-radius: 8px; background: #0067a7; color: #fff; text-decoration: none; font-weight: 700; white-space: nowrap; }
+    .branchys-doc-actions a.download { background: #eaf6fc; border: 1px solid #aed4ea; color: #003f73; }
+    .branchys-doc-actions a:hover, .branchys-doc-actions a:focus-visible { text-decoration: underline; }
+    .branchys-doc-status { padding: 22px; border: 1px dashed #b4d5e9; border-radius: 12px; color: #385b75; background: #f8fbfe; }
+    @media(max-width: 680px) {
+      .branchys-doc-item { align-items: flex-start; flex-wrap: wrap; gap: 12px; }
+      .branchys-doc-details { flex-basis: calc(100% - 55px); }
+      .branchys-doc-actions { padding-left: 45px; }
+    }
+    @media(prefers-reduced-motion: reduce) { .branchys-doc-actions a { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="banner"><img src="bandeau.png?v=8" alt="Les Branchy’s Water-Polo Quimperlé, Diwall Darer !"></div>
+  <div class="top">
+    <div class="menu" onclick="menu()">☰ Menu</div>
+    <nav class="nav">
+      <a href="index.html">Accueil</a>
+      <a href="club.html">Le club</a>
+      <a href="competition.html">Compétition</a>
+      <a href="loisir-beach.html">Loisir – Beach</a>
+      <a href="documents.html">Documents</a>
+      <a href="album.html">Album</a>
+    </nav>
+  </div>
+  <section class="pagehead"><div class="wrap"><h1>Documents</h1></div></section>
+  <main class="wrap content">
+    <p class="branchys-doc-intro">Retrouvez ici les documents utiles du club et les documents liés aux licences. Cliquez sur « Consulter » pour ouvrir un fichier ou sur « Télécharger » pour l'enregistrer.</p>
+    <section aria-label="Documents à télécharger">
+      <div id="branchys-documents" class="branchys-doc-list" aria-live="polite" aria-busy="true">
+        <p class="branchys-doc-status">Chargement des documents…</p>
+      </div>
+    </section>
+    <p class="small">Cet espace est public : les dossiers individuels et les données personnelles des adhérents ne doivent pas y être déposés.</p>
+  </main>
+  <div class="mixed">Pratique mixte à l’entraînement comme en match.</div>
+  <footer class="footer">
+    <div class="wrap cols">
+      <div>
+        <b>Contact</b>
+        <p>✉ <a href="mailto:lesbranchys@gmail.com">lesbranchys@gmail.com</a><br>📍 Sur place le lundi à 20h à l’Aquapaq de Quimperlé.</p>
+      </div>
+      <div>
+        <b>Suivez Les Branchy’s</b>
+        <p><a href="https://www.facebook.com/lesbranchysWaterpolo?locale=fr_FR">Facebook — Les Branchy’s Quimperlé</a><br><a href="https://www.instagram.com/lesbranchyswaterpolo/">Instagram — @Lesbranchyswaterpolo</a></p>
+      </div>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    // Les fichiers déposés dans "documents-club" (branche main) sont affichés automatiquement.
+    // Aucun fichier JSON et aucune modification du code ne sont nécessaires lors des prochains ajouts.
+    const dossier = 'documents-club';
+    const api = 'https://api.github.com/repos/Lesbranchys/branchys-site/contents/' + dossier + '?ref=main';
+    const extensions = new Set(['pdf','doc','docx','odt','rtf','txt','xls','xlsx','ods','ppt','pptx']);
+    const types = {pdf:'PDF',doc:'Word',docx:'Word',odt:'OpenDocument',rtf:'RTF',txt:'Texte',xls:'Excel',xlsx:'Excel',ods:'OpenDocument',ppt:'PowerPoint',pptx:'PowerPoint'};
+    const container = document.getElementById('branchys-documents');
+    if (!container) return;
+
+    function status(message) {
+      container.replaceChildren();
+      const element = document.createElement('p');
+      element.className = 'branchys-doc-status';
+      element.textContent = message;
+      container.append(element);
+      container.setAttribute('aria-busy', 'false');
+    }
+    function prettyName(name) {
+      return name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
+    }
+    function render(files) {
+      container.replaceChildren();
+      for (const file of files) {
+        const ext = file.name.split('.').pop().toLowerCase();
+        const url = dossier + '/' + encodeURIComponent(file.name);
+        const item = document.createElement('article');
+        item.className = 'branchys-doc-item';
+        const icon = document.createElement('span');
+        icon.className = 'branchys-doc-icon';
+        icon.textContent = ext === 'pdf' ? '📕' : ['doc','docx','odt','rtf','txt'].includes(ext) ? '📄' : ['xls','xlsx','ods'].includes(ext) ? '📊' : '📽️';
+        icon.setAttribute('aria-hidden','true');
+        const details = document.createElement('div');
+        details.className = 'branchys-doc-details';
+        const title = document.createElement('p');
+        title.className = 'branchys-doc-title';
+        title.textContent = prettyName(file.name);
+        const meta = document.createElement('span');
+        meta.className = 'branchys-doc-meta';
+        const size = file.size >= 1024*1024 ? (file.size/(1024*1024)).toFixed(1) + ' Mo' : Math.max(1, Math.round(file.size/1024)) + ' Ko';
+        meta.textContent = (types[ext] || ext.toUpperCase()) + ' · ' + size;
+        details.append(title,meta);
+        const actions = document.createElement('div');
+        actions.className = 'branchys-doc-actions';
+        const open = document.createElement('a');
+        open.href = url;
+        open.target = '_blank';
+        open.rel = 'noopener noreferrer';
+        open.textContent = 'Consulter';
+        const download = document.createElement('a');
+        download.href = url;
+        download.download = file.name;
+        download.className = 'download';
+        download.textContent = 'Télécharger';
+        actions.append(open,download);
+        item.append(icon,details,actions);
+        container.append(item);
+      }
+      container.setAttribute('aria-busy','false');
+    }
+    fetch(api, {headers: {'Accept': 'application/vnd.github+json'}})
+      .then(async (response) => {
+        if (response.status === 404) return [];
+        if (!response.ok) throw new Error('GitHub API HTTP ' + response.status);
+        return response.json();
+      })
+      .then((data) => {
+        if (!Array.isArray(data)) throw new Error('Le chemin de dépôt n’est pas un dossier');
+        const files = data.filter((f) => f.type === 'file' && extensions.has((f.name.split('.').pop() || '').toLowerCase()))
+          .sort((a,b) => a.name.localeCompare(b.name, 'fr', {numeric:true, sensitivity:'base'}));
+        if (!files.length) status('Aucun document disponible pour le moment.');
+        else render(files);
+      })
+      .catch((error) => {
+        console.warn('Documents Branchy’s :', error);
+        status('La liste des documents est momentanément indisponible. Veuillez réessayer ultérieurement.');
+      });
+  })();
+  </script>
+</body>
+</html>
